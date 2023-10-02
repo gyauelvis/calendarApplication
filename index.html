@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Application</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div id="app">
+        <div class="calendar-container">
+            <div class="year-month-btns">
+                <div class="calendar-month-year"></div>
+                <div class="back-forward">
+                    <a href="#" class="material-symbols-outlined forward" @click="prevMonthYear();insertingEmptyDiv(getFirstDayOfMonth()); checkingNumberOfDaysInTheMonth()">
+                        chevron_left
+                    </a>
+                    <a href="#" class="material-symbols-outlined forward" @click="nextMonthYear(); insertingEmptyDiv(getFirstDayOfMonth()); checkingNumberOfDaysInTheMonth()">
+                        chevron_right
+                    </a>
+                </div>
+            </div>
+            <div class="days">
+                <div v-for="day in days">{{day}}</div>
+            </div>
+
+            <div class="daysOfTheMonth days">
+                <a href="#" v-for="day in numberOfDays" class="number" :class="{'active':day==currentDay+1 && month==currentMonth}" >{{day}}</a>
+                <div class="pop-up">
+                
+                </div>
+            </div>
+
+            
+            
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="app.js"></script>
+</html>

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+:root{
+    --primary-font: Roboto, sans-serif;
+    --black: #1e1e1e;
+    --hover-bg: #cecece;
+    --active-element: #a7a7a7;
+}
+
+*{
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+body{
+    background-color: rgb(0, 0, 26);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.calendar-container{
+    background-color: #fff;
+    position: relative;
+    width: 30rem;
+    height: 35rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    padding: 2rem;
+    font-family: var(--primary-font);
+}
+
+
+.year-month-btns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.calendar-month-year{
+    font-size: x-large;
+    color: var(--black);
+    font-weight: 600;
+}
+.back-forward{
+    display: flex;
+    gap: 1rem;
+}
+.back-forward a{
+    color: var(--black);
+    font-size: xx-large;
+    transition: background 200ms ease-in-out;
+    -webkit-transition: background 200ms ease-in-out;
+    -moz-transition: background 200ms ease-in-out;
+    -ms-transition: background 200ms ease-in-out;
+    -o-transition: background 200ms ease-in-out;
+}
+
+.number{
+    color: var(--black);
+}
+
+.back-forward a:hover,.number:hover{
+    background-color: var(--hover-bg);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.daysOfTheMonth,.days{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    place-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.daysOfTheMonth{
+    padding: 1rem 0;
+}
+
+.number{
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+}
+
+.active{
+    
+    background-color: var(--active-element);
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}
+
+.pop-up{
+    display: flex;
+    position: absolute;
+    min-width: 15rem;
+    min-height: 10rem;
+    background-color: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0.5px 0.5px 5px 0px rgba(0,0,0,0.5);
+}
