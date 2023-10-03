@@ -346,3 +346,7 @@ label span{
     animation: close 200ms ease-in-out;
     -webkit-animation: close 200ms ease-in-out;
 }
+
+.clickedOn{
+    background-color: #114B5F;
+}

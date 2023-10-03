@@ -4,6 +4,7 @@ Vue.createApp({
             numberOfDays:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
             date :  new Date(Date()),
             month:null,
+            noChangeYear:null,
             months:["January", "February", "March","April", "May", "June", "July", "August", "September", "October","November", "December"],
             days:["Sun", "Mon", "Tue", "Wed", "Thu","Fri", "Sat"],
             currentMonth: null,
@@ -15,18 +16,25 @@ Vue.createApp({
             timeValue: null,
             descriptionValue: null,
 
+
         }
     },
     methods:{
         getMonthAndYear(){
-            
             this.currentDay  = this.date.getDay();
             this.currentMonth= this.date.getMonth();
             this.month = this.date.getMonth();
+            this.noChangeYear = this.date.getFullYear();
             this.currentYear= this.date.getFullYear();
             document.querySelector(".calendar-month-year").textContent = `${this.months[this.currentMonth]} ${this.currentYear}`;
         },
         nextMonthYear(){
+
+            document.querySelectorAll(".number").forEach(num=>{
+               if(month !)
+            })
+
+
             if(this.currentMonth<11){
                 this.currentMonth++
             }else{
@@ -66,7 +74,6 @@ Vue.createApp({
             }
         },
         checkingNumberOfDaysInTheMonth(){
-            
             document.querySelectorAll(".number").forEach(num=>{
                 num.style.display = "block";
                 if(this.currentMonth == 8 || this.currentMonth == 3 || this.currentMonth == 5 || this.currentMonth == 10){
@@ -106,7 +113,8 @@ Vue.createApp({
             document.querySelector(".calendar-container").style.borderRadius = "1rem";
         },
         openSideBar(event){
-            event.target.style.backgroundColor="#114B5F"
+
+            event.target.classList.add("clickedOn");
             this.isSideBar = true;
             document.querySelector(".calendar-container").style.borderRadius = "0rem";
             document.querySelector(".calendar-container").style.borderTopLeftRadius="1rem";
