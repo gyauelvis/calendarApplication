@@ -10,6 +10,10 @@ Vue.createApp({
             currentYear: null,
             firstDay: null,
             currentDay: null,
+            isShowClicked: false,
+            isSideBar:false,
+            timeValue: null,
+            descriptionValue: null,
 
         }
     },
@@ -95,13 +99,55 @@ Vue.createApp({
                     }
                 }
             })
-        }
+        },
+        closingSideBar(){
+            this.isShowClicked = false;
+            this.isSideBar = false;
+            document.querySelector(".calendar-container").style.borderRadius = "1rem";
+        },
+        openSideBar(event){
+            event.target.style.backgroundColor="#114B5F"
+            this.isSideBar = true;
+            document.querySelector(".calendar-container").style.borderRadius = "0rem";
+            document.querySelector(".calendar-container").style.borderTopLeftRadius="1rem";
+            document.querySelector(".calendar-container").style.borderBottomLeftRadius = "1rem";
+            let dayType = new Date(`${this.currentMonth +1} ${event.target.textContent} ${this.currentYear}`)
+            dayType = dayType.toString().slice(0,3)
+            document.querySelector('.day-date').textContent = `${dayType}, ${event.target.textContent}  ${this.months[this.currentMonth]}, ${this.currentYear}`
+        },
+        addingNewTask(){
+            this.isShowClicked=true;
+            const existingElem = document.querySelector('.info')
+            existingElem.style.display = 'flex';
+            document.querySelectorAll(".tasks").forEach(task=>task.style.display="none");
+        },
+        
+        deletingTaskAfterSaved(event){
+            event.target.parentElement.style.display = 'none';
+        },
+        savingTask(){
+            let elem = document.createElement('div');
+            document.querySelectorAll(".tasks").forEach(task=>task.style.display="flex");
+            elem.classList.add('tasks');
+            elem.innerHTML = `<a href="#" class="material-symbols-outlined" @click.prevent="deletingTaskAfterSaved">close</a>
+                                <div>
+                                    <span class="time">${this.timeValue}</span>
+                                    <span>${this.descriptionValue}</span>
+                                </div>`
+            const existingElem = document.querySelector('.info')
+            existingElem.style.display = 'none';
+            document.querySelector(".side-bar").insertBefore(elem, existingElem)
+            document.querySelectorAll('.tasks a').forEach(a=>a.addEventListener('click',this.deletingTaskAfterSaved,true)) 
+
+        },
     },
     mounted(){
         this.getMonthAndYear();
         this.insertingEmptyDiv(this.getFirstDayOfMonth());
         this.checkingNumberOfDaysInTheMonth();
+        
     }
+
 })
 
 .mount("#app")
