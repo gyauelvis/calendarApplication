@@ -30,9 +30,9 @@ Vue.createApp({
         },
         nextMonthYear(){
 
-            document.querySelectorAll(".number").forEach(num=>{
-               if(month !)
-            })
+            // document.querySelectorAll(".number").forEach(num=>{
+            //    if(month !)
+            // })   
 
 
             if(this.currentMonth<11){
@@ -108,12 +108,17 @@ Vue.createApp({
             })
         },
         closingSideBar(){
+            if(window.innerWidth<600){
+                document.querySelector(".calendar-container").style.display="grid";
+            }
             this.isShowClicked = false;
             this.isSideBar = false;
             document.querySelector(".calendar-container").style.borderRadius = "1rem";
         },
         openSideBar(event){
-
+            if(window.innerWidth<600){
+                document.querySelector(".calendar-container").style.display="none";
+            }
             event.target.classList.add("clickedOn");
             this.isSideBar = true;
             document.querySelector(".calendar-container").style.borderRadius = "0rem";

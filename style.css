@@ -33,6 +33,7 @@ body,#app{
     height: 100vh;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 .calendar-container{
@@ -349,4 +350,33 @@ label span{
 
 .clickedOn{
     background-color: #114B5F;
+}
+
+@media screen and (max-width: 980px) {
+    .calendar-container{
+        width: 50vw;
+        max-width: 30rem;
+        max-height: 35rem;
+    }
+    .side-bar{
+        max-width: 20rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .calendar-container{
+        width: 100vw;
+        padding: 2rem 1rem;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+}
+}
+
+@media screen and (max-width: 300px) {
+    .calendar-container{
+        padding: 0;
+    }
 }
